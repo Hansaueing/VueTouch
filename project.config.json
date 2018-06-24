@@ -10,7 +10,7 @@
 	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
 	"appid": "wx6cbeab7359c2218a",
-	"projectname": "my-project",
+	"projectname": "Vue",
 	"condition": {
 		"search": {
 			"current": -1,
