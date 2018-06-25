@@ -19,6 +19,7 @@
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
+    <a href="/pages/computer/main" class="computer">去往computer页面</a>
   </div>
 </template>
 
@@ -85,7 +86,7 @@ export default {
 }
 
 .usermotto {
-  margin-top: 150px;
+  margin-top: 50px;
 }
 
 .form-control {
@@ -101,5 +102,13 @@ export default {
   padding: 5px 10px;
   color: blue;
   border: 1px solid blue;
+}
+
+.computer {
+  display: inline-block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  color: black;
+  border: 1px solid red;
 }
 </style>
