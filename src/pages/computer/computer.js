@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 const computer = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
+    expression: ''
   },
   mutations: {
     increment: (state) => {
@@ -17,6 +18,27 @@ const computer = new Vuex.Store({
     decrement: (state) => {
       const obj = state
       obj.count -= 1
+    },
+    inputNum: (state, inputNum) => {
+      console.log('num=' + inputNum)
+      const obj = state
+      obj.expression = obj.expression + inputNum
+    },
+    inputSymbol: (state, symbol) => {
+      console.log('symbol=' + symbol)
+      const obj = state
+      obj.expression = obj.expression + ' ' + symbol + ' '
+    },
+
+    clear: (state) => {
+      const obj = state
+      obj.expression = ''
+    },
+    equal: (state) => {
+      const obj = state
+      let expression = obj.expression
+      let singleArray = expression.split(' ')
+      console.dir(singleArray)
     }
   }
 })

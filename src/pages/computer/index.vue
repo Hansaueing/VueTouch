@@ -1,10 +1,15 @@
 <template>
   <div class="counter-warp">
-    <p>Vuex counter：{{ count }}</p>
-    <p>
-      <button @click="increment">+</button>
-      <button @click="decrement">-</button>
-    </p>
+    <p>Expression：{{ result }}</p>
+    <h1 @click="inputNum('0')">0</h1>
+    <h1 @click="inputNum('1')">1</h1>
+    <h1 @click="inputNum('2')">2</h1>
+    <h1 @click="inputNum('3')">3</h1>
+    <h1 @click="inputNum('4')">4</h1>
+    <h1 @click="inputSymbol('+')">+</h1>
+    <h1 @click="clear()">clear</h1>
+    <h1 @click="equal()">=</h1>
+
 
     <a href="/pages/index/main" class="home">去往首页</a>
   </div>
@@ -16,8 +21,8 @@ import computer from './computer'
 
 export default {
   computed: {
-    count () {
-      return computer.state.count
+    result () {
+      return computer.state.expression
     }
   },
   methods: {
@@ -26,6 +31,18 @@ export default {
     },
     decrement () {
       computer.commit('decrement')
+    },
+    inputNum (number) {
+      computer.commit('inputNum', number)
+    },
+    inputSymbol (symbol) {
+      computer.commit('inputSymbol', symbol)
+    },
+    clear () {
+      computer.commit('clear')
+    },
+    equal () {
+      computer.commit('equal')
     }
   }
 }
@@ -34,7 +51,6 @@ export default {
 <style>
 .counter-warp {
   text-align: center;
-  margin-top: 100px;
 }
 .home {
   display: inline-block;

@@ -14,12 +14,13 @@
       </div>
     </div>
 
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
     <a href="/pages/computer/main" class="computer">去往computer页面</a>
+
+    <div id="example" @click="doSomething">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    </div>
   </div>
 </template>
 
@@ -30,7 +31,25 @@ export default {
   data () {
     return {
       motto: 'Hello World',
-      userInfo: {}
+      userInfo: {},
+      message: 'Hello',
+      isActive: true,
+      error: null
+    }
+  },
+
+  computed: {
+    reversedMessage: function () {
+      this.message = 'Goodbye'
+      return this.message.split('').reverse().join('')
+    },
+    classObject: function () {
+      let obj = {
+        active: this.isActive && !this.error,
+        'text-danger': this.error && this.error.type === 'fatal'
+      }
+      console.dir(obj)
+      return obj
     }
   },
 
@@ -39,6 +58,10 @@ export default {
   },
 
   methods: {
+    doSomething () {
+      console.log('doSomething')
+    },
+
     bindViewTap () {
       const url = '../logs/main'
       wx.navigateTo({ url })
@@ -50,6 +73,7 @@ export default {
           wx.getUserInfo({
             success: (res) => {
               this.userInfo = res.userInfo
+              this.motto = 'sddfsdfsdf'
             }
           })
         }
